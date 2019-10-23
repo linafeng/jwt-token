@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "c46be8d5-8913-40fa-9ebb-620d4cf0fe9d",
+		"name": "jwt_token",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4f5648fb-04be-40ff-a8d8-98e68b5ab93c",
+						"exec": [
+							"//将数据解析成json格式\r",
+							"var data=JSON.parse(responseBody);\r",
+							" \r",
+							"//获取access_token值\r",
+							"var access_token=data.content;\r",
+							" \r",
+							"//设置成环境变量\r",
+							"pm.environment.set(\"token\", access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "auth_token",
+						"value": "sfsafafff",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/login?name=fiona",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "fiona"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "valid token",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "auth_token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/login2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login2"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

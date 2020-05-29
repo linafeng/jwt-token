@@ -34,4 +34,38 @@ public class LoginController {
         System.out.println("测试");
         return new BaseResponse<String>();
     }
+
+    /**
+     * 不拦截
+     */
+    @GetMapping("/test")
+    public String test() {
+        System.out.println("url/test");
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("返回");
+        return "ssss";
+    }
+    /**
+     * 不拦截
+     */
+    @GetMapping("/test2")
+    public String test2() {
+        System.out.println("url/test2");
+        int count=1;
+        while (true){
+            System.out.println("小混混");
+            if(count==0){
+                System.out.println("count"+count);
+                break;
+            }
+
+        }
+
+        System.out.println("返回2");
+        return "ssss";
+    }
 }

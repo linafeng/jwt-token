@@ -38,7 +38,8 @@ public class WebConfiguration {
              */
             @Override
             public void addInterceptors(InterceptorRegistry registry) {
-                registry.addInterceptor(apiInterceptor).addPathPatterns("/**").excludePathPatterns("/login");
+                registry.addInterceptor(apiInterceptor).addPathPatterns("/**").excludePathPatterns("/login")
+                .excludePathPatterns("/test").excludePathPatterns("/test2");
             }
 
             @Override
